@@ -230,11 +230,19 @@ HAVING COUNT(*)>1;
 
 
 --    3.5 Display the Sum of All Salary for  employees with JOB_ID Contains Clerk
+select sum(SALARY)
+from EMPLOYEES
+where JOB_ID like '%CLERK%';
 
 --    3.6 Display the Max Salary for  employees with JOB_ID contains SA
+SELECT  SUM(SALARY)
+FROM EMPLOYEES
+WHERE JOB_ID LIKE '%SA%';
 
 --    3.7 Display the AVERAGE Salary for employees with JOB_ID ends with REP
-
+SELECT AVG(SALARY)
+FROM EMPLOYEES
+WHERE JOB_ID LIKE '%REP';
 --    3.8 Display the Average Salary for Each Department_ID
 --         if the Average Salary is from 5000- 10000
 

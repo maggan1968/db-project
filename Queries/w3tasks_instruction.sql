@@ -1,3 +1,10 @@
+--- Navigate to
+--  https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all
+--  - Click Restore Database on the right
+--    to start writing queries
+--  - Type your query inside the box and click run
+
+--  Here are the Tables and Columns and Relationship between Tables
 
 ---CUSTOMER TABLE COLUMNS :
    -- CustomerID
@@ -9,10 +16,7 @@
   --  Country
 
    -- RELATED TO ORDERS TABLE BY CustomerID COLUMN
-   SELECT CUSTOMER_ID, CUSTOMER_NAME, CONTACT_NAME,ADDRESS, CITY, POLSTAL_CODE, COUNTRY_NAME
-FROM CUSTOMER
-INNER JOIN CUSTOMER_ID
-GR
+
 
 
 

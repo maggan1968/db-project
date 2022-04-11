@@ -160,6 +160,9 @@ where MAX_SALARY > 10000
 
 
 --    1.23 Display Max Salary for JOB_TITLE President
+SELECT MAX_SALARY,JOB_TITLE AS President
+FROM JOBS;
+
 
 --    1.24 Display Programmer JOB_TITLE MAX_SALARY
 

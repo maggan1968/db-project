@@ -172,13 +172,27 @@ FROM JOBS;
 
 --    2.1  Display All Employees FIRST_NAME , JOB_ID , SALARY
 --        if the JOB_ID ends with ACCOUNT
+select FIRST_NAME, JOB_ID, SALARY
+from EMPLOYEES
+where JOB_ID like '%ACCOUNT';
 
---    2.2  Display All Employees FIRST_NAME , JOB_ID , SALARY
- --       if the JOB_ID ends with REP BUT not equal SA_REP
- --       ORDER the result by SALARY DESC
+-- 2.2  Display All Employees FIRST_NAME , JOB_ID , SALARY
+--if the JOB_ID ends with REP BUT not equal SA_REP
+--  ORDER the result by SALARY DESC
+
+select FIRST_NAME, JOB_ID, SALARY
+from EMPLOYEES
+where JOB_ID like '%REP'
+  and JOB_ID <> 'SA_REP'
+order by SALARY desc;
+
 
  --   2.3 Display All Employees FIRST_NAME if second Character is a
   --      ORDER the result by LENGTH of FIRST_NAME
+select FIRST_NAME
+from EMPLOYEES
+where FIRST_NAME like '_a%'
+order by length(FIRST_NAME);
 
 -----Department Table
 
@@ -193,12 +207,6 @@ WHERE DEPARTMENT_NAME LIKE '%IT %' ;
 SELECT *
 FROM DEPARTMENTS
     WHERE DEPARTMENT_NAME LIKE ' ';
-
-
-
-
-
-
 
 
 
@@ -218,11 +226,34 @@ WHERE JOB_TITLE LIKE '%Manager%';
 ---    3.1  Display Employees FIRST_NAME , LAST_NAME , FULL_NAME, LENTH OF FULL_NAME
 --         if the LENTH OF FULL_NAME is more than 12 , SORT FIRST_NAME ASC
 
---    3.2 Display the Employee Count for employees make more than 10000
+select FIRST_NAME,
+       LAST_NAME,
+       FIRST_NAME || ' ' || LAST_NAME as "FULL_NAME",
+       length(FIRST_NAME || ' ' || LAST_NAME)
+from EMPLOYEES
+where length(FIRST_NAME || ' ' || LAST_NAME) > 12
+order by FIRST_NAME asc;
 
---    3.2 Display the Employee Count for employees that has Manager_ID 108
+--3.2 Display the Employee Count for employees make more than 10000
+select count(*)
+from EMPLOYEES
+where SALARY > 10000;
 
---    3.3 Display the Employee Count for EACH Manager_ID
+--3.2 Display the Employee Count for employees that has Manager_ID 108
+select count(*)
+from EMPLOYEES
+where MANAGER_ID = 108;
+
+-- 3.3 Display the Employee Count for EACH Manager_ID
+select MANAGER_ID, COUNT(*)
+from EMPLOYEES
+group by MANAGER_ID;
+
+
+select FIRST_NAME, COUNT(FIRST_NAME)
+from EMPLOYEES
+group by FIRST_NAME
+having count(FIRST_NAME) > 1;
 
 --    3.4 Display the Employee Count for EACH FIRST_NAME (yeah and observe what you got)
 --            Filter the grouped result to only display if the count is more than 1
@@ -253,45 +284,97 @@ WHERE JOB_ID LIKE '%REP';
 -----Departments Table
 
 --   3.9 Display the Count of Departments in LOCATION_ID 1700
+SELECT COUNT(DEPARTMENT_ID)
+FROM DEPARTMENTS
+WHERE LOCATION_ID = '1700';
+-----------SAME--------
+SELECT COUNT(*)
+FROM DEPARTMENTS
+WHERE LOCATION_ID = 1700;
+
 
 --   3.10 Display the Count of Departments in EACH LOCATION_ID
+SELECT LOCATION_ID,COUNT(*)
+FROM DEPARTMENTS
+GROUP BY LOCATION_ID;
 
 --   3.11 Display the Count of Departments that has manager
+SELECT count(*)
+FROM DEPARTMENTS
+WHERE MANAGER_ID is not null;
 
 --   3.12 Display the Count of Departments that contains IT in DEPARTMENT_NAME
+SELECT COUNT(*)
+FROM DEPARTMENTS
+WHERE DEPARTMENT_NAME like '%IT%';
 
 --Locations Table
 
 --   3.13 Display the count of Location that does not have STATE_PROVINCE
+SELECT COUNT(*)
+FROM LOCATIONS
+WHERE STATE_PROVINCE IS NULL ;
 
 --   3.14 Display the count of Location in US, CA, IN
+select count(*)
+from LOCATIONS
+where COUNTRY_ID in ('US', 'CA', 'IN');
 
 --   3.15 Display the count of Location in EACH COUNTRY (COUNTRY_ID)
+select COUNTRY_ID, count(COUNTRY_ID)
+from LOCATIONS
+group by COUNTRY_ID;
 
 --   3.16 Display the count of Location for those location Contains st, Street in STREET_ADDRESS
+select COUNT(*)
+from LOCATIONS
+where STREET_ADDRESS like '%st%'
+   or STREET_ADDRESS like '%Street%';
 
 --   3.15 Display the count of Location in EACH COUNTRY (COUNTRY_ID)
 --         if the count is less than 3
+select COUNTRY_ID, COUNT(*)
+from LOCATIONS
+group by COUNTRY_ID
+having COUNT(*) < 3;
 
 ---Countries Table
 
 --   3.16 Display the count of Countries
+SELECT COUNT(*)
+FROM COUNTRIES;
 
  --  3.17 Display the count of Countries in Region 3
+SELECT COUNT(*)
+FROM COUNTRIES
+WHERE REGION_ID = 3;
+
 
 --   3.18 Display the count of Countries that has COUNTRY_NAME ended with a
-
+SELECT COUNT(COUNTRY_NAME)
+FROM COUNTRIES
+WHERE COUNTRY_NAME like '%a';
 --   3.19 Display the count if Countries for each REGION (REGION_ID)
-
+SELECT COUNT(REGION_ID)
+FROM COUNTRIES
+;
  --  3.19 Display the count if Countries for each REGION (REGION_ID)
  --       if the count is more than 5
-
+SELECT COUNT(REGION_ID)
+FROM COUNTRIES
+WHERE REGION_ID > 5;
 
 ----- Jobs Table
 
 --    3.2O Find out MAX(MIN_SALARY) in all JOBS
-
+SELECT  MAX(MIN_SALARY)
+FROM JOBS;
 --    3.21 Find out MAX (MAX_SALARY) for JOBS excluding President
+SELECT  MAX(MAX_SALARY)
+FROM JOBS
+WHERE JOB_TITLE <> 'President';
 
  --   3.22 Display AVG(MAX_SALARY) (this is column name) for JOBS that has Manager in TITLE
-
+select avg(MAX_SALARY)
+from jobs
+where JOB_TITLE like '%Manager%';

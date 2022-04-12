@@ -18,6 +18,7 @@ public class LoopingThroughResultSet {
     // keep looping to next row until there is no more rows when resultSet.next() return false
         //resultSet.next() move the pointer to next row
         //and return true if there is valid next row and false if there is no valid next row
+        //this will print all 4rows REGION_NAME
         while (resultSet.next()){
             System.out.println("resultSet.getString(\"REGION_NAME\") = "
                     + resultSet.getString("REGION_NAME"));

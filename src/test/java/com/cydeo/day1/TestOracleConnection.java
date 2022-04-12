@@ -52,5 +52,13 @@ public class TestOracleConnection {
         System.out.println("resultSet.getString(1) = " + resultSet.getString(1));
         System.out.println("resultSet.getString(2) = " + resultSet.getString(2));
 
+        //now we now move to next row
+        resultSet.next();
+        System.out.println("rs.getString(\"REGION_ID\") = "
+                + resultSet.getString("REGION_ID"));
+
+        System.out.println("resultSet.getString(\"REGION_NAME\") = "
+                + resultSet.getString("REGION_NAME"));
+
     }
 }

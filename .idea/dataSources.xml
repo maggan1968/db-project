@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="HR" uuid="6f5e9400-5c0b-4981-abce-b17f0e147eeb">
-      <driver-ref>oracle.19</driver-ref>
-      <synchronize>true</synchronize>
-      <auto-commit>false</auto-commit>
-      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@107.20.122.207:1521:XE</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="@44.203.47.253" uuid="db99b10d-f08c-43de-b456-6f4e5481ada8">
-      <driver-ref>oracle.19</driver-ref>
-      <synchronize>true</synchronize>
-      <auto-commit>false</auto-commit>
-      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@44.203.47.253:1521:XE</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="@3.83.127.158" uuid="3a4eeb89-d62e-47d7-bcb5-71d52c5cd22f">
       <driver-ref>oracle.19</driver-ref>
       <synchronize>true</synchronize>
@@ -25,12 +9,11 @@
       <jdbc-url>jdbc:oracle:thin:@3.83.127.158:1521:XE</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="@localhost" uuid="6577cced-d18d-4193-b6e2-f914b25693d9">
-      <driver-ref>oracle.19</driver-ref>
+    <data-source source="LOCAL" name="library2DB" uuid="a37ffe1d-f1db-463a-88de-fab5eeb4091c">
+      <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <auto-commit>false</auto-commit>
-      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@localhost:1521:XE</jdbc-url>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://54.157.236.232:3306/library2</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

@@ -8,12 +8,14 @@ public class SpartanDB_Test {
         String url = "jdbc:oracle:thin:@3.83.127.158:1521:XE";
         String username = "SP";
         String password = "SP";
-        Connection connection = DriverManager.getConnection(url,username,password) ;
+        Connection connection = DriverManager.getConnection(url, username, password);
         Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet resultSet   = statement.executeQuery("SELECT * FROM SPARTANS") ;
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM SPARTANS");
 
         //This table has SPARTAN_ID, NAME, GENDER, CREATED_IT, UPDATED_AT
-        resultSet.next();
-        System.out.println(resultSet.getString("SPARTAN_ID") + " " + resultSet.getString("NAME"));
+        while (resultSet.next()) {
+
+            System.out.println(resultSet.getString("SPARTAN_ID") + " " + resultSet.getString("NAME"));
+        }
     }
 }

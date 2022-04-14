@@ -1,0 +1,20 @@
+/**
+ * How to connect to MySQL Database (Library2 App)
+ * JDBC -> MySQL Driver -> YourCode to connect
+ * 1. Add MySQL Driver Dependency and reload maven
+ *
+ *  <dependency>
+ *     <groupId>mysql</groupId>
+ *     <artifactId>mysql-connector-java</artifactId>
+ *     <version>8.0.28</version>
+ *  </dependency>
+ *
+ * 2. Provide Library2 DB jdbc url,username,password
+ * 3. Create connection using getConnection method
+ * 4. Create statement using connection object
+ * 5. get ResultSet by executing query :
+          select * from books
+ *    6. ignore if IntelliJ shows red on String query
+ *    7. THERE CAN NOT BE A SYNTAX ERROR IN JAVA STRING
+ * 8. Iterate over the ResultSet object and print out books name
+ */

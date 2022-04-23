@@ -244,6 +244,15 @@ public class DB_Util {
 
     }
 
+    /**
+     *
+     * @return
+     */
+    public int getFirstCellAsInt(){
+        
+        return Integer.parseInt(getCellValue(1, 1));
+    }
+
     //
 
     /**

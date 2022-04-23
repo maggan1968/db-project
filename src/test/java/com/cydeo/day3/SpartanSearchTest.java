@@ -71,4 +71,20 @@ public class SpartanSearchTest {
 
 
     }
+
+    @Test
+    public void testSearchByPartialName(){
+
+        // searched by name contains a and got 62 result on ui
+        // we want to make sure this match database query result below
+        // SELECT COUNT(*) FROM SPARTANS WHERE LOWER(NAME) LIKE '%a%'
+
+        int actualResultFromUI = 62;
+
+        DB_Util.runQuery("SELECT COUNT(*)FROM SPARTANS WHERE LOWER(NAME) LIKE'%a%'");
+        int actualResulFromDB = Integer.parseInt(DB_Util.getFirstRowFirstColumn());
+
+        // assert
+        assertEquals(actualResultFromUI, actualResulFromDB);
+    }
 }

@@ -8,7 +8,7 @@
 -- * means all, here it means all columns
 -- from some table that exist in the database
 -- Just like Java
--- SQL Statements and in semi-colon : and it's mandatory
+-- SQL Statements and in semi-colon ; and it's mandatory
 SELECT * FROM REGIONS ;
 SELECT REGION_ID, REGION_NAME
 FROM REGIONS;
